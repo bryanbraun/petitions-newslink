@@ -20,7 +20,8 @@ class Issue < ActiveRecord::Base
   def petition_time_series
     h = petitions.count(:group => "DATE(created_at)")
     h.keys.each do |key|
-      h[Date.parse(key).to_time.to_i] = h.delete(key)
+      new_key = Date.parse(key).to_time.to_i
+      h[new_key] = h.delete(key)
     end
     h.to_a
   end
