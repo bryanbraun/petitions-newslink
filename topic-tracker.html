@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Petitions Newslink</title>
+		<link type="text/css" rel="stylesheet" href="style.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+		<script src="http://code.highcharts.com/stock/highstock.js"></script>
+		<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+		<script src="script.js"></script>
+	</head>
+
+	<body>
+
+		<header class="main-header">
+			<h1>Petitions Newslink</h1>
+		</header>
+		
+		<section class="main-section">
+			<div class="content-wrap">
+				<div class="content-box">
+					<div class="title-bar">
+						<h2>Topic Tracker: Toggle topics below<span class="help"></span></h2>
+					</div>
+					<div class="options" style="display: none;">
+						<p>Click the topics in the legend below to view active petitions by topic over time. This chart displays active petitions only, meaning, petitions with over the minimum threshold of signatures for visibility, and which have not yet reached their 30 day expiriation date.</p>
+					</div>
+					<div class="trends">
+						<img class="loading" src="loading.gif" />
+						<div id="container" style="height: 500px; min-width: 500px"></div>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+
+		<footer class="main-footer">
+			<p>A National Day of Civic Hacking project</p>
+		</footer>
+
+	</body>
+</html>
