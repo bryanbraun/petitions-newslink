@@ -52,6 +52,7 @@ $(function(){
 			  '181': 'Veterans and Military Families',
 			  '187': "Woman's Issues"};
 
+	console.log("Issues: " + issues);
 
 	// Build an array of timestamps.
 	//   resolution = # of days between data points.
@@ -85,6 +86,30 @@ $(function(){
 			}
 		});
 	};
+
+	var getRelatedContent = function(timestamp, issue_id) {
+		var related_content;
+		var json_url = 'http://lisabacker.com/wethepeople/?searchDate=' + timestamp + '&issueId=' + issue_id;
+		// Make API Request.
+		$.ajax({
+    		url: json_url,
+    		type:'GET',
+    		dataType:'JSONP',
+    		success: function(data){
+    			var resultset = data.metadata.resultset,
+				related_content = data.results;
+				$('body').trigger('relatedContentLoaded');
+   			}
+		});
+		/*
+		$.getJSON(url, function(data){
+			var resultset = data.metadata.resultset,
+			related_content = data.results;
+		});
+		*/
+
+		return related_content;
+	}
 
 	// A loop to count open petitions on a given date.
 	var searchPetitions = function(timestamp, issue_name) {
@@ -157,11 +182,32 @@ $(function(){
                         events: {
                             click: function() {
                             	console.log(this.series.name);
+                            	console.log(this.series.index);
+                            	console.log(this.x);
                             	console.log(Highcharts.dateFormat('%A, %b %e, %Y', this.x));
 								
-								$('.results').slideToggle();
+								if ($(".results").is(":hidden")) {
+									$('.results').slideDown();
+								}
+
+								$('.topic').empty();
 								$('.topic').append(this.series.name);
+
+								$('.date').empty();
 								$('.date').append(Highcharts.dateFormat('%A, %b %e, %Y', this.x));
+
+								var relatedContent = getRelatedContent(1369440000,22);
+								console.log(relatedContent);
+								/*
+								$.each(relatedContent, function(index, result){
+									// build out the list based on results.
+									$('.petition-list').empty();
+									$('news-list').empty();
+									
+
+								});
+								*/
+
                             }
                         }
                     },
@@ -205,6 +251,7 @@ $(function(){
 
 			allTrends.push({
 				name: issueName,
+				index: ind,
 				data: cloneCountLog(countLog),
 				visible: visibility
 			});

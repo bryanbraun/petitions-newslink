@@ -76,10 +76,10 @@ h1, h2, h3, h4, h5, h6 {
 	left: 280px;
 }
 
-.results a:link { color:#77933e; }
-.results a:visited { color:#77933e; }
-.results a:hover { color:#77933e; }
-.results a:active { color:#77933e; }
+.results a:link { color:#77933e; text-decoration:none; }
+.results a:visited { color:#77933e; text-decoration:none; }
+.results a:hover { color:#77933e; text-decoration:none; }
+.results a:active { color:#77933e; text-decoration:none; }
 
 .results h2,
 .results h3 {
@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .results li {
     list-style-type: none;
-    margin: 6px 0;
+    margin: 8px 0;
 }
 
 .news-results,
