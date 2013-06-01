@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .help {
 	padding: 16px 16px;
-	background: url('help.png') no-repeat right;
+	background: url('img/help.png') no-repeat right;
 	right: 16px;
 	position: absolute;
 }
@@ -76,6 +76,27 @@ h1, h2, h3, h4, h5, h6 {
 	left: 280px;
 }
 
+.results a:link { color:#77933e; }
+.results a:visited { color:#77933e; }
+.results a:hover { color:#77933e; }
+.results a:active { color:#77933e; }
+
+.results h2,
+.results h3 {
+    text-align: center;
+}
+
+.news-results,
+.petition-results {
+    float: left;
+    width: 430px;
+}
+
+.topic,
+.date {
+    color: #999;
+}
+
 .main-footer {
     background: #363636; /* Old browsers */
     background: -moz-linear-gradient(top,  #363636 0%, #091401 100%); /* FF3.6+ */
@@ -90,4 +111,21 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
     padding: 1em 0;
     text-align: center;
+}
+
+/**
+ * clearfix technique
+ */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
 }

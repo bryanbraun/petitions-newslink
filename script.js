@@ -138,17 +138,38 @@ $(function(){
 		    },
 
 		    scrollbar: {
-				barBackgroundColor: 'gray',
-				barBorderRadius: 7,
-				barBorderWidth: 0,
-				buttonBackgroundColor: 'gray',
-				buttonBorderWidth: 0,
-				buttonBorderRadius: 7,
-				trackBackgroundColor: 'none',
-				trackBorderWidth: 1,
-				trackBorderRadius: 8,
-				trackBorderColor: '#CCC'
-		    },
+            barBackgroundColor: 'gray',
+            barBorderRadius: 7,
+            barBorderWidth: 0,
+            buttonBackgroundColor: 'gray',
+            buttonBorderWidth: 0,
+            buttonBorderRadius: 7,
+            trackBackgroundColor: 'none',
+            trackBorderWidth: 1,
+            trackBorderRadius: 8,
+            trackBorderColor: '#CCC'
+        },
+
+        plotOptions: {
+            series: {
+               cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function() {
+                            	console.log(this.series.name);
+                            	console.log(Highcharts.dateFormat('%A, %b %e, %Y', this.x));
+								
+								$('.results').slideToggle();
+								$('.topic').append(this.series.name);
+								$('.date').append(Highcharts.dateFormat('%A, %b %e, %Y', this.x));
+                            }
+                        }
+                    },
+                    marker: {
+                        lineWidth: 1
+                    }
+                }
+            },
 
 		    series: countData
 		});
