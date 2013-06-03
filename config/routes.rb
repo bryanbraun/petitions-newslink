@@ -1,15 +1,17 @@
 We::Application.routes.draw do
   
+  # Issues API endpoints
   resources :issues
   
+  # Petitions API endpoints
   get 'petitions/:start/:end/:id' => "petitions#show"
   get 'petitions/:start/:end' => "petitions#index"
   
+  # Main page
+  root to: 'welcome#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root to: 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

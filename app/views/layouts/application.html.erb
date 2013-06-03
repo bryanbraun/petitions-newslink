@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Petitions Newslink</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+	<script src="http://code.highcharts.com/stock/highstock.js"></script>
+	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+<header class="main-header">
+	<h1>Petitions Newslink</h1>
+</header>
 
-<%= yield %>
+<section class="main-section">
+  <%= yield %>
+</section>
+
+<footer class="main-footer">
+	<p>A National Day of Civic Hacking project</p>
+</footer>
 
 </body>
 </html>
