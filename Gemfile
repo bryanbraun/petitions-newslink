@@ -37,6 +37,8 @@ gem "migrant", "~> 1.4.1"
 
 gem "pry"
 
+gem "rack-contrib"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

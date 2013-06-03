@@ -69,6 +69,8 @@ GEM
     rabl (0.8.5)
       activesupport (>= 2.3.14)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0.beta1)
@@ -139,6 +141,7 @@ DEPENDENCIES
   pg
   pry
   rabl
+  rack-contrib
   rails (= 4.0.0.beta1)
   sass-rails (~> 4.0.0.beta1)
   sqlite3
