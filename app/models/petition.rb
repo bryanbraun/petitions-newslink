@@ -37,8 +37,8 @@ class Petition < ActiveRecord::Base
     "#{identifier}"
   end
     
-  def self.update_batch(count=1600, offset=0)
-    petitions = WeThePeople::Resources::Petition.all(nil, {count: count, offset: offset})
+  def self.update_all
+    petitions = WeThePeople::Resources::Petition.cursor.get_all
     petitions.each do |pet|
       next if pet.type != 'petition'
       it = Petition.where(:identifier => pet.id).first_or_create
