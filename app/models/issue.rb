@@ -17,7 +17,7 @@ class Issue < ActiveRecord::Base
     "#{id}-#{name.parameterize}"
   end
   
-  def petition_time_series
+  def data
     h = petitions.count(:group => "DATE(created_at)")
     h.keys.each do |key|
       new_key = Date.parse(key.to_s).to_time.to_i
