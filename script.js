@@ -1,15 +1,15 @@
 $(function(){
-	// Expanding options box.
+	// Expanding help box.
 	$('.title-bar').click(function() {
-		$('.options').slideToggle();
+		$('.help').slideToggle();
 	});
 
 	// Create and initialize variables.
 	var timeSeriesData,
 	timeSeriesAPI = 'http://wethedata.herokuapp.com/issues';
 
-/*
-// Issues array... just keeping it here for reference, for now.
+	/*
+	// Issues array... just keeping it here for reference, for now.
 	var issues = {'0': 'All',
 				  '1': 'Agriculture',
 				  '2': 'Arts and Humanities',
@@ -50,7 +50,7 @@ $(function(){
 				  '175': 'Urban Policy',
 				  '181': 'Veterans and Military Families',
 				  '187': "Woman's Issues"};
-*/
+	*/
 
 	// A function that pulls in timeseries data from the Heroku API.
 	var loadTimeSeries = function(id) {
@@ -69,8 +69,6 @@ $(function(){
 				visibility;
 				
 				results = data;
-				console.log('Raw data:');
-				console.log(results);
 				$.each(results, function(index, issueObject){
 
 					if(issueObject.issue.id === 0) {
@@ -86,8 +84,6 @@ $(function(){
 				});
 
 				timeSeriesData = adjusted;
-				console.log('Adjusted data:');
-				console.log(timeSeriesData);
 				buildChart(timeSeriesData);
 				$('img.loading').hide();
 
@@ -97,6 +93,29 @@ $(function(){
 				console.log('status: ' + jqXHR.status);
 			}
 		});
+	}
+
+	// uses the contents of topPetitionData to build a list.
+	var buildRelevantResultsList = function(results) {
+		var petitionList = '',
+		petitionItem,
+		newsList = '',
+		newsItem;
+
+		// Hide loading wheel and populate new data.
+		$('img.loading-sm').hide();
+
+		$.each(results.data.articles, function(index, article) {
+			newsItem = '<li><a title="' + article.title + '" href="' + article.url + '">' + article.title + '</a></li>';
+			newsList += newsItem;
+		});
+		$.each(results.data.petitions, function(index, petition) {
+			petitionItem = '<li><a title="' + petition.title + '" href="' + petition.url + '">' + petition.title + '</a></li>';
+			petitionList += petitionItem;
+		});
+
+		$('.petition-list').append(petitionList);
+		$('.news-list').append(newsList);
 	}
 
 	// A function for building the chart, given structured data.
@@ -111,10 +130,14 @@ $(function(){
 
 		    legend: {
 		    	enabled: true,
+		    	verticalAlign: 'top',
+		    	align: 'center',
+		    	floating: false,
+		    	width: 770
 		    },
 
 		    title: {
-		        text: 'Petitions Count Over Time'
+		        text: null
 		    },
 
 		    scrollbar: {
@@ -136,21 +159,31 @@ $(function(){
                     point: {
                         events: {
                             click: function() {
-                            	console.log(this.series);
-                            	console.log(this.series.name);
-                            	console.log(this.series.userOptions.id); // The ID to pass to NYTimes
-                            	console.log(this.x); // The Timestamp to pass to NYTimes
-                            	console.log(Highcharts.dateFormat('%A, %b %e, %Y', this.x));
+                            	$('img.loading-sm').show(); // Show mini loading wheel.
+
+                            	$('html, body').animate({
+        							scrollTop: $("#results-box").offset().top
+    							}, 2000);
+
+                            	console.log('Topic: ' + this.series.name); // Topic name.
+                            	console.log('Topic ID: ' + this.series.userOptions.id); // The ID to pass to getPetitionData.
+                            	console.log('Timestamp: ' + this.x); // The Timestamp to pass to getPetitionData.
 								
 								if ($(".results").is(":hidden")) {
 									$('.results').slideDown();
 								}
 
+								// Clear out all old data, and start populating new data.
 								$('.topic').empty();
-								$('.topic').append(this.series.name);
-
 								$('.date').empty();
+								$('.petition-list').empty();
+								$('.news-list').empty();
+
+								$('.topic').append(this.series.name);
 								$('.date').append(Highcharts.dateFormat('%A, %b %e, %Y', this.x));
+
+								// Call for new relevant data to be populated.
+								newsfinder.getPetitionData(this.x, this.series.userOptions.id, buildRelevantResultsList);
                             }
                         }
                     },

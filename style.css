@@ -48,14 +48,14 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0.4em 0;
 }		
 
-.help {
+.help-icon {
 	padding: 16px 16px;
 	background: url('img/help.png') no-repeat right;
 	right: 16px;
 	position: absolute;
 }
 
-.options {
+.help {
 	background: #f9f9f9;
     padding: 1px 1em;
     -moz-box-shadow:    inset 0 0 6px #ddd;
@@ -74,6 +74,16 @@ h1, h2, h3, h4, h5, h6 {
 	position: absolute;
 	top: 80px;
 	left: 280px;
+}
+
+.loading-sm {
+    position: absolute;
+    top: 80px;
+    left: 400px; 
+}
+
+.results {
+    position: relative;
 }
 
 .results a:link { color:#77933e; text-decoration:none; }
