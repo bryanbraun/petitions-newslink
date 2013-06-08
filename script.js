@@ -105,17 +105,21 @@ $(function(){
 		// Hide loading wheel and populate new data.
 		$('img.loading-sm').hide();
 
-		$.each(results.data.articles, function(index, article) {
-			newsItem = '<li><a title="' + article.title + '" href="' + article.url + '">' + article.title + '</a></li>';
-			newsList += newsItem;
-		});
-		$.each(results.data.petitions, function(index, petition) {
-			petitionItem = '<li><a title="' + petition.title + '" href="' + petition.url + '">' + petition.title + '</a></li>';
-			petitionList += petitionItem;
-		});
+		if (results.success === true) {
+			$.each(results.data.articles, function(index, article) {
+				newsItem = '<li><a title="' + article.title + '" href="' + article.url + '">' + article.title + '</a></li>';
+				newsList += newsItem;
+			});
+			$.each(results.data.petitions, function(index, petition) {
+				petitionItem = '<li><a title="' + petition.title + '" href="' + petition.url + '">' + petition.title + '</a></li>';
+				petitionList += petitionItem;
+			});
 
-		$('.petition-list').append(petitionList);
-		$('.news-list').append(newsList);
+			$('.petition-list').append(petitionList);
+			$('.news-list').append(newsList);
+		} else {
+			$('.results').append('<h3>Oops. There was an error: ' + results.message + '</h3>')
+		}
 	}
 
 	// A function for building the chart, given structured data.
