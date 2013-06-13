@@ -20,7 +20,7 @@ class Issue < ActiveRecord::Base
   def data
     h = petitions.count(:group => "DATE(created_at)")
     h.keys.sort.each do |key, value|
-      new_key = Date.parse(key.to_s).to_time.to_i
+      new_key = Date.parse(key.to_s).to_time.to_i * 1000  # millisecond timestamp format
       h[new_key] = h.delete(key)
     end
     h.to_a
