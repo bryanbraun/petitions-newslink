@@ -5,7 +5,6 @@
  * 
  * RELIES ON:
  * WeTheEntites API - http://wetheentities.herokuapp.com/ - for semantic analysis of petition text
- * WeTheData - http://www.wethedata.herokuapp.com/ - for a caching layer of aggregate petition data
  * NYTimes Aritcle Search API v2 - http://api.nytimes.com/svc/search/v2/articlesearch
  * 
  * TODOs:
@@ -18,7 +17,7 @@
     var timesAPIKey = '27a5d4e81f538c940f9547f669fa3361:0:67663443'; // key to allow NYTimes article search api calls
     var timesArticleAPI = 'http://api.nytimes.com/svc/search/v2/articlesearch.jsonp'; // endpoint for NYTimes article search calls
     var entitiesAPI = 'http://wetheentities.herokuapp.com/petitions/'; // endpoint for entity data calls
-    var cachedDataAPI = 'http://wethedata.herokuapp.com/petitions/'; // endpoint for caching data calls
+    var cachedDataAPI = '/petitions/'; // endpoint for caching data calls
     var articleLimit = 5; // maximum number of articles to return
     var petitionLimit = 5; // maximum number of petitions to return
     

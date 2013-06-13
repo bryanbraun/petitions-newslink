@@ -6,7 +6,7 @@ $(function(){
 
 	// Create and initialize variables.
 	var timeSeriesData,
-	timeSeriesAPI = 'http://wethedata.herokuapp.com/issues';
+	timeSeriesAPI = '/issues';
 
 	/*
 	// Issues array... just keeping it here for reference, for now.
