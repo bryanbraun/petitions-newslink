@@ -49,11 +49,11 @@ h1, h2, h3, h4, h5, h6 {
 .title-bar h2 {
     text-align: center;
     margin: 0.4em 0;
-}		
+}
 
 .help-icon {
 	padding: 16px 16px;
-	background: url('img/help.png') no-repeat right;
+	background: url('/assets/help.png') no-repeat right;
 	right: 16px;
 	position: absolute;
 }
