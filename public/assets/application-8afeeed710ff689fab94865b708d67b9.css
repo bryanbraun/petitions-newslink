@@ -1,0 +1,153 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 1em; /* usually 16px */
+    font-weight: 200;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 200;
+}
+
+.main-header {
+    background: #77933e; /* Old browsers */
+    background: -moz-linear-gradient(top,  #77933e 0%, #567c0b 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#77933e), color-stop(100%,#567c0b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #77933e 0%,#567c0b 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #77933e 0%,#567c0b 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #77933e 0%,#567c0b 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #77933e 0%,#567c0b 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#77933e', endColorstr='#567c0b',GradientType=0 ); /* IE6-9 */
+    border: 1px solid transparent; /* prevent collapsing borders */
+}
+
+.main-header h1 {
+    color: #fff;
+    font-size: 4.6em;
+    text-align: center;
+}
+
+.content-wrap {
+    margin: 1em auto;
+    width: 900px;
+}
+
+.content-box {
+    border: 1px solid #ccc;
+    /* box-shadow: 0px 0px 50px 2px #ccc; */
+    border-radius: 5px;
+}
+
+.title-bar {
+    border: 1px solid transparent;
+    position: relative;
+}
+
+.title-bar h2 {
+    text-align: center;
+    margin: 0.4em 0;
+}		
+
+.help {
+	padding: 16px 16px;
+	background: url('img/help.png') no-repeat right;
+	right: 16px;
+	position: absolute;
+}
+
+.options {
+	background: #f9f9f9;
+    padding: 1px 1em;
+    -moz-box-shadow:    inset 0 0 6px #ddd;
+	-webkit-box-shadow: inset 0 0 6px #ddd;
+	box-shadow:         inset 0 0 6px #ddd;
+	border-top: 1px solid #ccc;
+}
+
+.trends {
+	border-top: 1px solid #ccc;
+	padding: 1em;
+	position: relative;
+}
+
+.loading {
+	position: absolute;
+	top: 80px;
+	left: 280px;
+}
+
+.results a:link { color:#77933e; text-decoration:none; }
+.results a:visited { color:#77933e; text-decoration:none; }
+.results a:hover { color:#77933e; text-decoration:none; }
+.results a:active { color:#77933e; text-decoration:none; }
+
+.results h2,
+.results h3 {
+    text-align: center;
+}
+
+.results li {
+    list-style-type: none;
+    margin: 8px 0;
+}
+
+.news-results,
+.petition-results {
+    float: left;
+    width: 430px;
+}
+
+.topic,
+.date {
+    color: #999;
+}
+
+.main-footer {
+    background: #363636; /* Old browsers */
+    background: -moz-linear-gradient(top,  #363636 0%, #091401 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#363636), color-stop(100%,#091401)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #363636 0%,#091401 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #363636 0%,#091401 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #363636 0%,#091401 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #363636 0%,#091401 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#091401',GradientType=0 ); /* IE6-9 */
+    font-size: .8em;
+    font-weight: 200;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+/**
+ * clearfix technique
+ */
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
