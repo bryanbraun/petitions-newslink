@@ -220,18 +220,17 @@
     
     /**
      * Retrieves the related news for the top 5 petitions at a particular date optionally limited by an issue
-     * @param {int} petitionEpoch the date to search from as the number of seconds since unix epoch
+     * @param {int} petitionEpoch the date to search from as the number of milliseconds since unix epoch
      * @param {int} issueId the id of an issue to use for filtering (leave blank or pass 0 for all)
      * @param {Function} callback the callback function upon completion
      */
     var getPetitionData = function(petitionEpoch,issueId,callback) {
-        petitionEpochMS = petitionEpoch*1000;
-        searchStartEpoch = petitionEpochMS - 604800000; // petition date - 7 days*24 hour/day*60 min/hour * 60 sec/min*1000 ms/sec
-        searchEndEpoch = petitionEpochMS + 604800000;
+        searchStartEpoch = petitionEpoch - 604800000; // petition date - 7 days*24 hour/day*60 min/hour * 60 sec/min*1000 ms/sec
+        searchEndEpoch = petitionEpoch + 604800000;
         searchIssueId = issueId;
         clientCallback = callback;
         // get the top petitions for the time and issue
-        getTopPetitions(petitionEpochMS,issueId,onTopPetitions);
+        getTopPetitions(petitionEpoch,issueId,onTopPetitions);
     }
     
     /**
